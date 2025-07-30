@@ -1,6 +1,6 @@
 name: "nsfw"
 platform: "pytorch_libtorch"
-max_batch_size: 32
+max_batch_size: 0
 
 input [
   {
@@ -15,18 +15,15 @@ output [
   {
     name: "logits"
     data_type: TYPE_FP32
-    dims: [2]
+    dims: [1, 2]
   }
 ]
 
 instance_group [
   {
-    count: 8
+    count: 1
     kind: KIND_GPU
   }
 ]
 
-dynamic_batching {
-  preferred_batch_size: [8, 16, 32]
-  max_queue_delay_microseconds: 100
-}
+# dynamic_batching removed because the model returns a fixed batch size (1)
