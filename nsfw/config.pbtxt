@@ -4,7 +4,7 @@ max_batch_size: 0
 
 input [
   {
-    name: "input"
+    name: "pixel_values"
     data_type: TYPE_FP32
     format: FORMAT_NCHW
     dims: [3, 224, 224]
